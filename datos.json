@@ -1,0 +1,11 @@
+{
+    "cadena":"uwu",
+    "numero":"26",
+    "booleano":"true",
+    "arreglo":["monster hunter","kekw"],
+    "objeto":{
+        "twitter":"@apez_hugo",
+        "email":"hukranya@gmail.com"
+    },
+    "nullo":null
+}
