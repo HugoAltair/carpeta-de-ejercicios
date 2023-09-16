@@ -8,14 +8,18 @@
         console.log(xhr);
         if(xhr.status >=200 && xhr.status <300){//status satisfactorios
             console.log('exito');
-            //console.log(xhr.responseText);
+            console.log(xhr.responseText);
             let json = JSON.parse(xhr.responseText);//para transformar el json a formato js
-            console.log(json); 
-            //json.forEach((el)=>{
-                const $li = document.createElement("li");
-                $li.innerHTML = `${json.name}--Numero: ${json.id}`;
+            //console.log(json); 
+            console.log(json.results); 
+            let result = json.results;
+            let i=1;
+            result.forEach((el)=>{
+                const $li = document.createElement("option");
+                $li.innerHTML = `${el.name}--Numero: ${i}`;
+                i++;
                 $fragment.appendChild($li); 
-            //});
+            });
             $xhr.appendChild($fragment);
         }else{
             console.log('error');
@@ -23,7 +27,7 @@
             $xhr.innerHTML = `Error ${xhr.status}: ${message}`;
         }
     });
-    xhr.open("GET","https://pokeapi.co/api/v2/pokemon/ditto");//abrir la peticion, metodo y recurso (end point)
+    xhr.open("GET","https://pokeapi.co/api/v2/pokemon?limit=20");//abrir la peticion, metodo y recurso (end point)
     xhr.send();//enviar la peticion
 })();
 
