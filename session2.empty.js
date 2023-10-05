@@ -32,7 +32,7 @@ function chunkArray(arr, len) {
     let numberFloor = Math.floor(newArr);
     newArr = numberFloor;
   }
-  let newArr2 = [[]],
+  let newArr2 = [],
     newArr3 = [[]],
     a = 0;
   for (let i = 0; i <= newArr; i++) {
@@ -42,16 +42,19 @@ function chunkArray(arr, len) {
         newArr3[j] = arr[a];
         a++;
       }
+      if (newArr3[j] === undefined) {
+        newArr3.pop();
+      }
     }
     //console.log(newArr3);
-    newArr2[i] += new Array(newArr3);
-    console.log(newArr2);
+    newArr2.push([...newArr3]);
+    //console.log(newArr2);
   }
   return newArr2;
 }
 
 console.log(chunkArray([1, 2, 3, 4, 5, 6, 7], 2));
-// console.log(chunkArray([1, 2, 3, 4, 5, 6, 7], 3));
+console.log(chunkArray([1, 2, 3, 4, 5, 6, 7], 3));
 
 // CHALLENGE 3: FLATTEN ARRAY
 // Take an array of arrays and flatten to a single array
