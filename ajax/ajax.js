@@ -34,7 +34,7 @@
 (()=>{
     const $fetch = document.getElementById("fetch"),
         $fragment = document.createDocumentFragment();
-    fetch("https://pokeapi.co/api/v2/pokemon/gardevoir")//puede llevar opciones
+    fetch("https://pokeapi.co/api/v2/pokemon/bulbasaur")//puede llevar opciones
     .then(res => res.ok ? res.json() : Promise.reject(res))//.json-.text-.blop//el operador ternario es para que si la url esta mal vaya al catch
     .then(json=>{//el primer then es para transformar ya sea a json o a text, y el segundo es la logica de programacion
         console.log(json);
@@ -49,4 +49,21 @@
         $fetch.innerHTML = `Error ${err.status}: ${message}`;
     })
     .finally(()=> console.log("Esto se ejecutara independientemente del resultado de la promesa Fetch"));
+})();
+(()=>{
+    const $fetch = document.getElementById("fetch"),
+        $fragment = document.createDocumentFragment();
+    fetch("https://pokeapi.co/api/v2/type/4")//puede llevar opciones
+    .then(res => res.ok ? res.json() : Promise.reject(res))//.json-.text-.blop//el operador ternario es para que si la url esta mal vaya al catch
+    .then(json=>{//el primer then es para transformar ya sea a json o a text, y el segundo es la logica de programacion
+        console.log(json.damage_relations);
+        
+    })
+    .catch(err=>{
+        console.log(err);
+        let message = err.statusText || 'Ese pokemon no existe';
+        $fetch.innerHTML = `Error ${err.status}: ${message}`;
+    })
+    //.finally(()=> console.log("Esto se ejecutara independientemente del resultado de la promesa Fetch"))
+    ;
 })();
