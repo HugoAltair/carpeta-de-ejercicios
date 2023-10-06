@@ -105,6 +105,42 @@ console.log(isAnagram("BELOW", "elbow"));
 // Z should turn to A
 // ex. 'hello there' === 'Ifmmp UIfsf'
 
-function letterChanges(str) {}
+function letterChanges(str) {
+  let newStr = str.split("");
+  let code = [];
+  let code2 = [];
+  let codeConversion;
+  let codeConversion2;
+  for (let i = 0; i < newStr.length; i++) {
+    //codeConversion = newStr.charCodeAt(newStr[i]);
+    codeConversion = newStr[i].charCodeAt(0);
+    codeConversion += 1;
+    if (codeConversion === 90 || codeConversion === 122) {
+      codeConversion = 65;
+    }
+    if (codeConversion === 101) {
+      codeConversion = 69;
+    }
+    if (codeConversion === 101) {
+      codeConversion = 69;
+    }
+    if (codeConversion === 105) {
+      codeConversion = 73;
+    }
+    if (codeConversion === 111) {
+      codeConversion = 79;
+    }
+    if (codeConversion === 117) {
+      codeConversion = 85;
+    }
+    if (codeConversion === 33) {
+      codeConversion = 32;
+    }
+    code.push(codeConversion);
+    codeConversion2 = String.fromCharCode(codeConversion);
+    code2.push(codeConversion2);
+  }
+  return `${str} => ${code2.join("")}`;
+}
 
-// console.log(letterChanges("Hello there"));
+console.log(letterChanges("Hello there"));
