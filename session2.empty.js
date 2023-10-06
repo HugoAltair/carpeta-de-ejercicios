@@ -108,7 +108,6 @@ console.log(isAnagram("BELOW", "elbow"));
 function letterChanges(str) {
   let newStr = str.split("");
   let code = [];
-  let code2 = [];
   let codeConversion;
   let codeConversion2;
   for (let i = 0; i < newStr.length; i++) {
@@ -136,11 +135,10 @@ function letterChanges(str) {
     if (codeConversion === 33) {
       codeConversion = 32;
     }
-    code.push(codeConversion);
     codeConversion2 = String.fromCharCode(codeConversion);
-    code2.push(codeConversion2);
+    code.push(codeConversion2);
   }
-  return `${str} => ${code2.join("")}`;
+  return `${str} => ${code.join("")}`;
 }
 
 console.log(letterChanges("Hello there"));
