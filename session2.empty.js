@@ -60,23 +60,47 @@ console.log(chunkArray([1, 2, 3, 4, 5, 6, 7], 3));
 // Take an array of arrays and flatten to a single array
 // ex. [[1, 2], [3, 4], [5, 6], [7]] = [1, 2, 3, 4, 5, 6, 7]
 
-function flattenArray(arrays) {}
+function flattenArray(arrays) {
+  let newArr = arrays.flat(3);
+  return newArr;
+}
 
-// console.log(flattenReduce([[1, 2], [3, 4], [5, 6], [7]]));
+//console.log(flattenReduce([[1, 2], [3, 4], [5, 6], [7]]));
 // console.log(flattenReduce([[1, [2, [2.5, 2.6], 2.75]], [3, 4], [5, 6], [7]]));
 
-// console.log(flattenArray([[1, 2], [3, 4], [5, 6], [7]]));
-// console.log(flattenArray([[1, [2, [2.5, 2.6], 2.75]], [3, 4], [5, 6], [7]]));
+console.log(flattenArray([[1, 2], [3, 4], [5, 6], [7]]));
+console.log(flattenArray([[1, [2, [2.5, 2.6], 2.75]], [3, 4], [5, 6], [7]]));
 
 // CHALLENGE 4: ANAGRAM
 // Return true if anagram and false if not
 // ex. 'elbow' === 'below'
 // ex. 'Dormitory' === 'dirty room##'
 
-function isAnagram(str1, str2) {}
+function isAnagram(str1, str2) {
+  //make the original strings to lower case, regular expresion, split and sort
+  let newStr1 = str1
+    .toLowerCase()
+    .replace(/[^a-z0-9]/gi, "")
+    .split("")
+    .sort();
+  let newStr2 = str2
+    .toLowerCase()
+    .replace(/[^a-z0-9]/gi, "")
+    .split("")
+    .sort();
+  let newStr3 = [...newStr1];
+  let newStr4 = [...newStr2];
+  console.log(newStr3);
+  console.log(newStr4);
+  if (newStr3 === newStr4) {
+    return `${str2} is an anagram of ${str1}`;
+  } else {
+    return `${str2} isn't an anagram of ${str1}`;
+  }
+}
 
-// console.log(isAnagram("Dormitory", "dirty room##"));
-// console.log(isAnagram("BELOW", "elbow"));
+console.log(isAnagram("Dormitory", "dirty room##"));
+console.log(isAnagram("BELOW", "elbow"));
 
 // CHALLENGE 5: LETTER CHANGES
 // Change every letter of the string to the one that follows it and capitalize the vowels
