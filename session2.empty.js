@@ -90,9 +90,7 @@ function isAnagram(str1, str2) {
     .sort();
   let newStr3 = [...newStr1];
   let newStr4 = [...newStr2];
-  console.log(newStr3);
-  console.log(newStr4);
-  if (newStr3 === newStr4) {
+  if (JSON.stringify(newStr3) === JSON.stringify(newStr4)) {
     return `${str2} is an anagram of ${str1}`;
   } else {
     return `${str2} isn't an anagram of ${str1}`;
