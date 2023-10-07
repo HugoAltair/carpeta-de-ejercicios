@@ -120,9 +120,6 @@ function letterChanges(str) {
     if (codeConversion === 101) {
       codeConversion = 69;
     }
-    if (codeConversion === 101) {
-      codeConversion = 69;
-    }
     if (codeConversion === 105) {
       codeConversion = 73;
     }
