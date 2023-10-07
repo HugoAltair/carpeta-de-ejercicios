@@ -114,7 +114,7 @@ function letterChanges(str) {
     //codeConversion = newStr.charCodeAt(newStr[i]);
     codeConversion = newStr[i].charCodeAt(0);
     codeConversion += 1;
-    if (codeConversion === 90 || codeConversion === 122) {
+    if (codeConversion === 91 || codeConversion === 123) {
       codeConversion = 65;
     }
     if (codeConversion === 101) {
