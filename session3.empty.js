@@ -3,22 +3,13 @@
 // ex. addAll(2,5,6,7) === 20
 
 function addAll() {
-  sum = 0;
+  let sum = 0;
   for (i = 0; i < arguments.length; i++) {
     sum += arguments[i];
   }
   return sum;
 }
-function addAll2(numbers) {
-  let initialValue = 0;
-  let sum = numbers.reduce(
-    (accumulator, currentValue) => accumulator + currentValue,
-    initialValue
-  );
-  return sum;
-}
-console.log(addAll(2, 5, 6, 7, 8));
-//console.log(addAll2(2, 5, 6, 7, 8));
+console.log(addAll(2, 5, 6, 7));
 // CHALLENGE 2: SUM ALL PRIMES
 // Pass in a number to loop up to and add all of the prime numbers. A prime number is a whole number greater than 1 whose only factors are 1 and itself
 // ex. sumAllPrimes(10) == 17
