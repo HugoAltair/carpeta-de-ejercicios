@@ -45,7 +45,7 @@ function seekAndDestroy(input, ...params) {
   for (i = 0; i < params.length; i++) {
     //newInput.replace(new RegExp(JSON.stringify(params[i]), "ig"), "");
     let newParams = params[i].toString();
-    newInput.replace(new RegExp(newParams, "ig"), "");
+    newInput = newInput.replace(new RegExp(newParams, "ig"), "");
     console.log(newParams);
   }
   return newInput;
@@ -61,9 +61,30 @@ console.log(seekAndDestroy([2, 3, 4, 6, 6, "hello"], 2, 6));
 // a = [-1, 150, 190, 170, -1, -1, 160, 180]
 // sortByHeight(a) == [-1, 150, 160, 170, -1, -1, 180, 190]
 
-function sortByHeight(array) {}
+function sortByHeight(array) {
+  let newArr = [],
+    newArr2 = [];
+  let acum = 0;
+  array.forEach((el) => {
+    if (el === -1) newArr.push(el);
+    else {
+      newArr.push(0);
+      newArr2.push(el);
+    }
+  });
+  newArr2 = newArr2.sort();
+  //console.log(newArr2);
+  for (i = 0; i < newArr.length; i++) {
+    if (newArr[i] === 0) {
+      newArr[i] = newArr2[acum];
+      //console.log(newArr2[acum]);
+      acum += 1;
+    }
+  }
+  return `${array} => ${newArr}`;
+}
 
-// console.log(sortByHeight([-1, -1, 190, 175, 160, -1, 172, -1]));
+console.log(sortByHeight([-1, -1, 190, 175, 160, -1, 172, -1]));
 
 // CHALLENGE 5: MISSING LETTERS
 // Find the missing letter in the passed letter range and return it. If all letters are present, return undefined
@@ -72,25 +93,49 @@ function sortByHeight(array) {}
 // missingLetters("abcdefghjklmno") == "i"
 // missingLetters("abcdefghijklmnopqrstuvwxyz") == undefined
 
-function missingLetters(sentence) {}
+function missingLetters(sentence) {
+  let newSentence = sentence.split("");
+  //console.log(newSentence);
+  let codeConversion = [];
+  let codeConversion2;
+  for (i = 0; i < newSentence.length; i++) {
+    codeConversion.push(newSentence[i].charCodeAt(0));
+  }
+  let compare = codeConversion[0];
+  //console.log(compare);
+  for (i = 0; i < codeConversion.length; i++) {
+    if (compare === codeConversion[i]) {
+      compare += 1;
+    } else {
+      codeConversion2 = String.fromCharCode(compare);
+      return `${sentence} is missing ${codeConversion2}`;
+    }
+  }
+  return undefined;
+}
 
-// console.log(missingLetters("cdefh"));
-// console.log(missingLetters("cdefgh"));
-// console.log(missingLetters("abcdefghjklmno"));
-// console.log(missingLetters("abcdefghijklmnopqrstuvwxyz"));
+console.log(missingLetters("cdefh"));
+console.log(missingLetters("cdefgh"));
+console.log(missingLetters("abcdefghjklmno"));
+console.log(missingLetters("abcdefghijklmnopqrstuvwxyz"));
 
 // CHALLENGE 6: EVEN & ODD SUMS
 // Take in an array and return an array of the sums of even and odd numbers
 // ex.
 // evenOddSums([50, 60, 60, 45, 71]) == [170, 116]
 
-function evenOddSums(arr) {}
+function evenOddSums(arr) {
+  let evenArr = 0,
+    oddArr = 0,
+    newArr = [];
+  arr.forEach((el) => {
+    if (el % 2 === 0) evenArr += el;
+    else oddArr += el;
+  });
+  newArr[0] = evenArr;
+  newArr[1] = oddArr;
+  return `${arr} => ${newArr}`;
+}
 
-// const output = evenOddSums([50, 60, 60, 45, 71]);
-// console.log(output);
-const eliminarPatron = (str = "", patron = "") => {
-  if (!str) return console.warn("No ingresaste texto");
-  if (!patron) return console.warn("no ingresaste el patron");
-  console.info(str.replace(new RegExp(patron, "ig"), "")); //la bandera i es para que no distinga de mayusculas y minusculas, la g para una busqueda global
-};
-//eliminarPatron("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");
+const output = evenOddSums([50, 60, 60, 45, 71]);
+console.log(output);
