@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "jonkwheeler.styled-components-snippets",
+    "esbenp.prettier-vscode"
+  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+}

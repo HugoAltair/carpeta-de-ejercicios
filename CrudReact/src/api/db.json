@@ -1,0 +1,39 @@
+{
+  "Nikkes": [
+    {
+      "id": 1,
+      "name": "Anis",
+      "manufacturer": "Tetra"
+    },
+    {
+      "id": 2,
+      "name": "Rapi",
+      "manufacturer": "Elysion"
+    },
+    {
+      "id": 3,
+      "name": "Naga",
+      "manufacturer": "Missillis"
+    },
+    {
+      "id": 4,
+      "name": "Modernia",
+      "manufacturer": "Pilgrim"
+    },
+    {
+      "id": 5,
+      "name": "2B",
+      "manufacturer": "Abnormal"
+    },
+    {
+      "name": "Helm",
+      "manufacturer": "Elysion",
+      "id": 1698283822195
+    },
+    {
+      "name": "Privaty",
+      "manufacturer": "Elysion",
+      "id": 1698285364184
+    }
+  ]
+}
