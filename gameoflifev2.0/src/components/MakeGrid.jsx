@@ -18,7 +18,6 @@ export function makeEmptyArray(colm, rows) {
 function randomNumber() {
   return Math.floor(Math.random() * 2);
 }
-
 export function countAliveCells(grid, x, y, colms, rows) {
   let aliveCells = 0;
   // console.table(grid);

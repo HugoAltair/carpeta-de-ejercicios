@@ -10,18 +10,11 @@ const BoardContext = createContext();
 export default BoardContext;
 const colm = 10;
 const rows = 10;
+const width = 500;
+const height = 500;
 export function BoardProvider({ children }) {
   const [board, setBoard] = useState(null);
 
-  useEffect(() => {
-    // create a random grid in the first run
-    setBoard(makeGrid(10, 10));
-    setInterval(() => {
-      let grid = generateNextIteration();
-      console.log(grid);
-      setBoard((prevStage) => grid);
-    }, 1000);
-  }, []);
   function cellRules(alive, cellsAround) {
     if (alive === 0 && cellsAround === 3) {
       return 1;
@@ -32,6 +25,7 @@ export function BoardProvider({ children }) {
     }
   }
   function generateNextIteration() {
+    // console.log(board);
     if (board) {
       let newEmptyArray = makeEmptyArray(colm, rows);
       for (let i = 0; i < colm; i++) {
@@ -40,7 +34,7 @@ export function BoardProvider({ children }) {
           newEmptyArray[i][j] = cellRules(board[i][j], cellsAround);
         }
       }
-      // console.log(board);
+      //console.log(board);
 
       return newEmptyArray;
     }
@@ -48,7 +42,15 @@ export function BoardProvider({ children }) {
 
   return (
     <BoardContext.Provider
-      value={{ board, setBoard, generateNextIteration, colm, rows }}
+      value={{
+        board,
+        setBoard,
+        generateNextIteration,
+        colm,
+        rows,
+        width,
+        height,
+      }}
     >
       {children}
     </BoardContext.Provider>

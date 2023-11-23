@@ -1,9 +1,10 @@
 import { useContext, useEffect } from "react";
 import { useRef } from "react";
 import BoardContext from "../context/boardContext";
+import { setBlinker } from "./MakeGrid";
 
 export const Board = () => {
-  const { board, setBoard, generateNextIteration, colm, rows } =
+  const { board, setBoard, generateNextIteration, colm, rows, width, height } =
     useContext(BoardContext);
   const canvasRef = useRef(null);
   function createBoard(ctx, grid) {
@@ -22,17 +23,31 @@ export const Board = () => {
     }
   }
   useEffect(() => {
+    //   // create a random grid in the first run
+
+    let grid = setBlinker(colm, rows);
+    setBoard(grid);
+    console.log(grid);
+  }, []);
+
+  useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     if (board) {
       createBoard(ctx, board);
     }
+    setInterval(() => {
+      let newGrid = generateNextIteration();
+      setBoard(newGrid);
+      // console.log(newGrid);
+    }, 1000);
   }, [board]);
+
   return (
     <canvas
       ref={canvasRef}
-      width={500}
-      height={500}
+      width={width}
+      height={height}
       style={{ border: "1px solid #000" }}
     />
   );
