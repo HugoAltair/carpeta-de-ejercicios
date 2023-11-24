@@ -4,11 +4,18 @@ import BoardContext from "../context/boardContext";
 import { makeGrid, setBlinker } from "./MakeGrid";
 
 export const Board = () => {
-  const { board, setBoard, generateNextIteration, colm, rows, width, height } =
-    useContext(BoardContext);
+  const {
+    board,
+    setBoard,
+    generateNextIteration,
+    colm,
+    rows,
+    width,
+    height,
+    cellSize,
+  } = useContext(BoardContext);
   const canvasRef = useRef(null);
   function createBoard(ctx, grid) {
-    const cellSize = 50;
     const colors = ["#000000", "#FF0000"];
     //drawing the grid
     for (let i = 0; i < colm; i++) {

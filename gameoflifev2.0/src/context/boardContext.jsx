@@ -5,8 +5,9 @@ const BoardContext = createContext();
 export default BoardContext;
 const colm = 15;
 const rows = 30;
-const width = 1500;
-const height = 750;
+const cellSize = 50;
+const width = rows * cellSize;
+const height = colm * cellSize;
 export function BoardProvider({ children }) {
   const [board, setBoard] = useState(null);
 
@@ -45,6 +46,7 @@ export function BoardProvider({ children }) {
         rows,
         width,
         height,
+        cellSize,
       }}
     >
       {children}
