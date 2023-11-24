@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { useRef } from "react";
 import BoardContext from "../context/boardContext";
-import { setBlinker } from "./MakeGrid";
+import { makeGrid, setBlinker } from "./MakeGrid";
 
 export const Board = () => {
   const { board, setBoard, generateNextIteration, colm, rows, width, height } =
@@ -25,7 +25,8 @@ export const Board = () => {
   useEffect(() => {
     //   // create a random grid in the first run
 
-    let grid = setBlinker(colm, rows);
+    //let grid = makeGrid(colm, rows);
+    let grid = makeGrid(colm, rows);
     setBoard(grid);
     console.log(grid);
   }, []);
@@ -36,11 +37,15 @@ export const Board = () => {
     if (board) {
       createBoard(ctx, board);
     }
-    setInterval(() => {
+    let interval = setInterval(() => {
       let newGrid = generateNextIteration();
       setBoard(newGrid);
       // console.log(newGrid);
-    }, 1000);
+    }, 500);
+    //after the redrawing face,
+    return () => {
+      clearInterval(interval);
+    };
   }, [board]);
 
   return (

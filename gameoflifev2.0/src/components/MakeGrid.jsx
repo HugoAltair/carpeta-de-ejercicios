@@ -1,19 +1,17 @@
-export function makeGrid(colm, rows) {
-  let arr = new Array(colm);
-  for (let i = 0; i < arr.length; i++) {
-    arr[i] = new Array(rows);
-    for (let j = 0; j < arr.length; j++) {
-      arr[i][j] = randomNumber();
-    }
-  }
-  return arr;
+export function makeGrid(rows, colm) {
+  const grid = Array.from({ length: rows }, (row) => {
+    return Array.from({ length: colm }, (col) => {
+      return randomNumber();
+    });
+  });
+  return grid;
 }
-export function makeEmptyArray(colm, rows) {
-  let arr = new Array(colm);
-  for (let i = 0; i < arr.length; i++) {
-    arr[i] = new Array(rows);
-  }
-  return arr;
+export function makeEmptyArray(rows, colm) {
+  return Array.from({ length: rows }, (row) => {
+    return Array.from({ length: colm }, (col) => {
+      return 0;
+    });
+  });
 }
 function randomNumber() {
   return Math.floor(Math.random() * 2);
@@ -35,15 +33,15 @@ export function countAliveCells(grid, x, y, colms, rows) {
 }
 export function setBlinker() {
   return [
+    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 1, 1, 0, 0, 0, 1, 1, 1, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ];
 }

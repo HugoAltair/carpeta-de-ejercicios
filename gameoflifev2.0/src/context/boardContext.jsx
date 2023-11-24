@@ -1,17 +1,12 @@
-import { createContext, useEffect, useState } from "react";
-import {
-  countAliveCells,
-  makeEmptyArray,
-  makeGrid,
-  setBlinker,
-} from "../components/MakeGrid";
+import { createContext, useState } from "react";
+import { countAliveCells, makeEmptyArray } from "../components/MakeGrid";
 
 const BoardContext = createContext();
 export default BoardContext;
-const colm = 10;
-const rows = 10;
-const width = 500;
-const height = 500;
+const colm = 15;
+const rows = 30;
+const width = 1500;
+const height = 750;
 export function BoardProvider({ children }) {
   const [board, setBoard] = useState(null);
 
