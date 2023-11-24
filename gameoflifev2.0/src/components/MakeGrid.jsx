@@ -1,14 +1,14 @@
-export function makeGrid(rows, colm) {
-  const grid = Array.from({ length: rows }, (row) => {
-    return Array.from({ length: colm }, (col) => {
+export function makeGrid(colm, rows) {
+  const grid = Array.from({ length: colm }, (row) => {
+    return Array.from({ length: rows }, (col) => {
       return randomNumber();
     });
   });
   return grid;
 }
-export function makeEmptyArray(rows, colm) {
-  return Array.from({ length: rows }, (row) => {
-    return Array.from({ length: colm }, (col) => {
+export function makeEmptyArray(colm, rows) {
+  return Array.from({ length: colm }, (row) => {
+    return Array.from({ length: rows }, (col) => {
       return 0;
     });
   });
